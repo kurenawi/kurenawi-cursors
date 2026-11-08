@@ -118,7 +118,7 @@ textarea{{width:100%;box-sizing:border-box;height:80px;background:#1d0910;color:
 <p>マスに乗せると、そのカーソルに変わるよ。小さい絵は「こうなるはず」の見本。</p>
 <p>配布: <a href="https://github.com/kurenawi/kurenawi-cursors/releases/latest" style="color:#fff">GitHub Releases（Windows / macOS / PNG のzip）</a> ・ <a href="macos/kurenawi.cape" download style="color:#fff">kurenawi.cape だけ落とす</a> ・ <a href="https://github.com/kurenawi/kurenawi-cursors#readme" style="color:#fff">インストール手順</a></p>
 <h2>macOSのカーソル（Mousecapeで置き換わる）</h2>
-<p>ブラウザがmacOSのカーソルを呼ぶから、Mousecapeの置き換えがそのまま見える。「macOS標準のまま」はcapeで置き換えていない種類。</p>
+<p>ブラウザがmacOSのカーソルを呼ぶから、Mousecapeの置き換えがそのまま見える。</p>
 <div class="grid">{''.join(tiles)}</div>
 <h2>実際に触って確かめる</h2>
 <p>紅いチップをつかんで、下の枠の上まで運んでみて。枠に乗るとカーソルがコピー・エイリアス・ドロップ不可に変わって、離すと結果が出るよ。テキスト欄は右下の角をつかむと大きさを変えられる。</p>
