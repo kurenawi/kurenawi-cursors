@@ -609,6 +609,7 @@ def main():
             data = ani_bytes(curs, 6)  # 6 jiffies = 100 ms
             fn = f"{name}.ani"
             for k in range(n):
+                per_scale[1][k].save(os.path.join(OUT, "png", "anim", f"{name}@32_{k}.png"))
                 per_scale[2][k].save(os.path.join(OUT, "png", "anim", f"{name}@64_{k}.png"))
             per_scale[4][0].save(os.path.join(OUT, "png", "anim", f"{name}@128.gif"), save_all=True,
                                  append_images=per_scale[4][1:], duration=100, loop=0, disposal=2,

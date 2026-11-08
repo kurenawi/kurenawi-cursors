@@ -4,7 +4,7 @@
 
 A pixel-art mouse cursor set featuring kurenawi. Windows (`.cur` / `.ani` + `install.inf`), macOS (Mousecape `.cape`) and PNGs for CSS.
 
-- **デモ（全パターンを試せる）**: https://kurenawi.github.io/kurenawi-cursors/
+- **デモ**: https://kurenawi.github.io/kurenawi-cursors/ （インストール不要。Windows / macOS どちらでも、全パターンの見た目をブラウザで試せます）
 - **ダウンロード**: [Releases](https://github.com/kurenawi/kurenawi-cursors/releases/latest) の `kurenawi-cursors-<version>.zip`
 
 ![preview](docs/preview.png)
@@ -72,22 +72,24 @@ macOS には標準でカーソルを着せ替える機能がないため、無�
 .kurenawi a { cursor: url(png/link@32.png) 3 1, pointer; }
 ```
 
-## 動作確認
+## デモとインストール確認ページ
 
-[デモページ](https://kurenawi.github.io/kurenawi-cursors/) のマスにマウスを乗せると、その種類の OS カーソルに切り替わります。インストール後に開けば、くれない版に置き換わっているかを全種類まとめて確かめられます。
+- **デモ（公開）**: [kurenawi cursor demo](https://kurenawi.github.io/kurenawi-cursors/) はカーソル画像をページ内で表示するので、インストールしていなくても見た目を試せます。
+- **インストール確認（ローカル）**: zip に入っている `cursor-test.html` をブラウザで開きます。こちらは OS のカーソルをそのまま呼ぶので、インストール後に開くと、OS のカーソルが本当にくれない版に置き換わったかを全種類まとめて確かめられます（未インストールなら OS 標準のカーソルのまま）。公開はしていません。
 
 ## ソースからビルド
 
 ```sh
 pip install pillow numpy
 python3 build_cursors.py      # dist/kurenawi-cursors/ に .cur/.ani/.inf/.cape/PNG を出力
-python3 make_test_page.py     # デモページ（index.html）を出力
+python3 make_test_page.py     # インストール確認ページ dist/kurenawi-cursors/cursor-test.html（ローカル用）
+python3 make_demo_page.py     # 公開デモ dist/site/（GitHub Pages に載るのはここだけ）
 python3 make_og_image.py      # OGP画像 docs/og.png を作り直す（macOS のフォントを使うので手元で実行して commit）
 python3 -m unittest discover -s tests
 ```
 
 - `art/sheet_a.png`（16表情）と `art/sheet2_a.png`（macOS向け5種＋バイバイ）がキャラの元絵です。プロンプトは同じフォルダの `cursor_sheet*.txt`。
-- `main` への push で GitHub Pages のデモが自動デプロイされ、`v*` タグの push で Release の zip が作られます。
+- `main` への push で `dist/site/`（公開デモ）だけが GitHub Pages に自動デプロイされ、`v*` タグの push で Release の zip が作られます。
 
 ## クレジットとライセンス
 

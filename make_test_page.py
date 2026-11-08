@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-"""Write kurenawi-cursors/cursor-test.html: hover tiles for every cursor pattern.
+"""Write dist/kurenawi-cursors/cursor-test.html: the LOCAL install check (not published).
 
+Open it after installing the pack to see whether the OS cursors were really replaced.
 Section 1 uses plain CSS cursor keywords, so the browser asks macOS for its own system
 cursor and Mousecape's replacement shows (when the cape maps that cursor).
 Section 2 uses the pack PNGs through CSS url(), so roles that macOS has no slot for
 (Windows-only roles and extras) can still be seen live.
 
-usage: python3 make_test_page.py   (after build_cursors.py; writes index.html too)
+usage: python3 build_cursors.py && python3 make_test_page.py && open dist/kurenawi-cursors/cursor-test.html
+(the public demo is make_demo_page.py)
 """
 import base64
 import html
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SITE = "https://kurenawi.github.io/kurenawi-cursors/"
-DESC = ("紅（くれない）のピクセルアート・マウスカーソル。Windows / macOS (Mousecape) / CSS 対応。"
-        "マスに乗せて全パターンを試せるデモ。")
 PACK = os.path.join(HERE, "dist", "kurenawi-cursors")
 
 # (css keyword, kurenawi role or None, Japanese label, where it appears naturally on macOS)
@@ -98,21 +97,7 @@ def main():
     page = f"""<!doctype html>
 <html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>kurenawi cursor demo</title>
-<meta name="description" content="{DESC}">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="kurenawi cursors">
-<meta property="og:title" content="kurenawi cursor demo">
-<meta property="og:description" content="{DESC}">
-<meta property="og:url" content="{SITE}">
-<meta property="og:image" content="{SITE}og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="kurenawi cursor demo: 14 pixel-art mouse cursors with a chibi kurenawi">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="kurenawi cursor demo">
-<meta name="twitter:description" content="{DESC}">
-<meta name="twitter:image" content="{SITE}og.png">
+<title>kurenawi cursor test (local)</title>
 <style>
 body{{margin:0;padding:24px;background:#2c0e18;color:#ffe6ea;font:14px/1.5 -apple-system,"Hiragino Sans",sans-serif}}
 h1{{margin:0 0 4px;color:#fff;text-shadow:0 0 6px #e0102a}} h2{{margin:28px 0 6px;color:#ffb3c0}}
@@ -131,9 +116,10 @@ display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
 textarea{{width:100%;box-sizing:border-box;height:80px;background:#1d0910;color:#ffe6ea;border:1px solid #5a2333;border-radius:8px;resize:both;padding:8px}}
 .sys{{font-size:11px;color:#9a6a76;height:64px;display:flex;align-items:center}}
 </style></head><body>
-<h1>kurenawi cursor demo</h1>
+<h1>kurenawi cursor test</h1>
+<p>インストール後の確認用（ローカル専用）。インストールしていない人向けの見た目デモは <a href="https://kurenawi.github.io/kurenawi-cursors/" style="color:#fff">kurenawi cursor demo</a>。</p>
 <p>マスに乗せると、そのカーソルに変わるよ。小さい絵は「こうなるはず」の見本。</p>
-<p>配布: <a href="https://github.com/kurenawi/kurenawi-cursors/releases/latest" style="color:#fff">GitHub Releases（Windows / macOS / PNG のzip）</a> ・ <a href="macos/kurenawi.cape" download style="color:#fff">kurenawi.cape だけ落とす</a> ・ <a href="https://github.com/kurenawi/kurenawi-cursors#readme" style="color:#fff">インストール手順</a></p>
+<p><a href="https://github.com/kurenawi/kurenawi-cursors#readme" style="color:#fff">インストール手順</a></p>
 <h2>macOSのカーソル（Mousecapeで置き換わる）</h2>
 <p>ブラウザがmacOSのカーソルを呼ぶから、Mousecapeの置き換えがそのまま見える。</p>
 <div class="grid">{''.join(tiles)}</div>
@@ -184,9 +170,7 @@ document.addEventListener("pointerup", () => {{
 <div class="grid">{''.join(extras)}</div>
 </body></html>
 """
-    import shutil
-    shutil.copyfile(os.path.join(HERE, "docs", "og.png"), os.path.join(PACK, "og.png"))
-    for name in ("cursor-test.html", "index.html"):
+    for name in ("cursor-test.html",):
         out = os.path.join(PACK, name)
         with open(out, "w") as f:
             f.write(page)

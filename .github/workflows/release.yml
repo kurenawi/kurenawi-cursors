@@ -20,6 +20,7 @@ jobs:
         run: |
           python3 build_cursors.py
           python3 make_test_page.py
+          python3 make_demo_page.py
           python3 -m unittest discover -s tests -v
       - name: Package
         run: |
@@ -27,6 +28,7 @@ jobs:
           mkdir -p "pkg/$NAME"
           cp -R dist/kurenawi-cursors/windows dist/kurenawi-cursors/macos dist/kurenawi-cursors/png \
                 dist/kurenawi-cursors/hotspots.tsv dist/kurenawi-cursors/preview.png \
+                dist/kurenawi-cursors/cursor-test.html \
                 README.md LICENSE LICENSE-ART.md "pkg/$NAME/"
           (cd pkg && zip -qr "$NAME.zip" "$NAME")
           (cd pkg && sha256sum "$NAME.zip" > "$NAME.zip.sha256")

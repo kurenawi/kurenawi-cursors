@@ -11,6 +11,7 @@ Checks the built pack, which build_cursors.py writes by hand (no cursor library)
 Run after building: python3 build_cursors.py && python3 make_test_page.py && python3 -m unittest discover -s tests
 (needs pillow and numpy)
 """
+import re
 import subprocess
 import sys
 import textwrap
@@ -19,6 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "dist/kurenawi-cursors"
+SITE = ROOT / "dist/site"
 PY = [sys.executable, "-c"]
 
 CHECK = textwrap.dedent(r"""
@@ -113,16 +115,35 @@ class CursorPackTest(unittest.TestCase):
 
     def test_demo_has_ogp_card(self):
         # Link previews need absolute og/twitter image URLs and a 1200x630 card in the site.
-        page = (PACK / "index.html").read_text()
+        page = (SITE / "index.html").read_text()
         site = "https://kurenawi.github.io/kurenawi-cursors/"
         for tag in ('property="og:title"', 'property="og:description"', f'property="og:url" content="{site}"',
                     f'property="og:image" content="{site}og.png"', 'name="twitter:card" content="summary_large_image"',
                     f'name="twitter:image" content="{site}og.png"'):
             self.assertIn(tag, page)
         r = subprocess.run(PY + ["from PIL import Image; import sys; print(Image.open(sys.argv[1]).size)",
-                                 str(PACK / "og.png")], capture_output=True, text=True)
+                                 str(SITE / "og.png")], capture_output=True, text=True)
         self.assertEqual(r.stdout.strip(), "(1200, 630)", r.stderr)
 
+    def test_demo_and_test_page_are_separate(self):
+        # The public demo must show kurenawi's cursors to people who have NOT installed the
+        # pack, so every cursor there is an image cursor. The keyword-based install check is
+        # local only: it must not be deployed, and it carries no OGP card.
+        page = (SITE / "index.html").read_text()
+        bare = re.findall(r"cursor:\s*([a-z-]+)\s*(?:!important)?\s*[;}]", page)
+        self.assertEqual([b for b in bare if b != "inherit"], [])
+        tiles = re.findall(r'<div class="tile (c-[a-z0-9_-]+)"', page)
+        self.assertEqual(len(tiles), 27)
+        for cls in tiles:
+            rule = re.search(r"\." + re.escape(cls) + r"[,{][^}]*\}", page)
+            self.assertTrue(rule and "url(png/" in rule.group(0), cls)
+        for name in ("work_figures", "windows", "macos", "cursor-test.html"):
+            self.assertFalse((SITE / name).exists(), name)
+        test_page = (PACK / "cursor-test.html").read_text()
+        self.assertNotIn("og:image", test_page)
+        self.assertIn("cursor:crosshair", test_page.replace(" ", ""))
+        wf = (ROOT / ".github/workflows/pages.yml").read_text()
+        self.assertRegex(wf, r"path:\s*dist/site\b")
 
 if __name__ == "__main__":
     unittest.main()
