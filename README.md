@@ -94,7 +94,6 @@ python3 -m unittest discover -s tests
 ## クレジットとライセンス
 
 - キャラクター: kurenawi（オリジナルキャラクター）。ちびキャラの絵は画像生成AI（OpenAI の画像生成）で描いたものを加工しています。矢印などのピクセル記号は手打ちです。
-- 構成のアイデア: 左上に記号・右下にキャラを置くレイアウトは、[@crazyghsot さんの「[F2U] Mouse Cursors | Momonga」](https://x.com/crazyghsot/status/2119293841035698375) を参考にしました。Momonga の絵は一切使っていません。
 - ライセンス:
   - コード（`*.py`、`tests/`、ワークフロー）: [MIT](LICENSE)
   - カーソル画像と元絵（`art/`、配布物の画像）: [CC BY-NC 4.0](LICENSE-ART.md)。個人利用や非営利の配布・改変は、クレジットを付ければ自由です。商用利用は不可です。

@@ -235,7 +235,6 @@ footer{{margin-top:36px;font-size:12px;color:#b98390}}
 
 <footer>
 カーソル画像: CC BY-NC 4.0 ・ コード: MIT ・ ちびキャラはAIで生成した絵を加工しています ・
-レイアウトは <a href="https://x.com/crazyghsot/status/2119293841035698375">@crazyghsot さんの Momonga カーソル</a> を参考にしました（絵は使っていません）・
 <a class="c-link" href="{REPO}">GitHub</a>
 </footer>
 </main>
