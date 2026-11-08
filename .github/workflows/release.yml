@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow numpy
+      - name: Build and test
+        run: |
+          python3 build_cursors.py
+          python3 make_test_page.py
+          python3 -m unittest discover -s tests -v
+      - name: Package
+        run: |
+          NAME="kurenawi-cursors-${GITHUB_REF_NAME}"
+          mkdir -p "pkg/$NAME"
+          cp -R dist/kurenawi-cursors/windows dist/kurenawi-cursors/macos dist/kurenawi-cursors/png \
+                dist/kurenawi-cursors/hotspots.tsv dist/kurenawi-cursors/preview.png \
+                README.md LICENSE LICENSE-ART.md "pkg/$NAME/"
+          (cd pkg && zip -qr "$NAME.zip" "$NAME")
+          (cd pkg && sha256sum "$NAME.zip" > "$NAME.zip.sha256")
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          NAME="kurenawi-cursors-${GITHUB_REF_NAME}"
+          gh release create "$GITHUB_REF_NAME" "pkg/$NAME.zip" "pkg/$NAME.zip.sha256" \
+            --title "kurenawi cursors $GITHUB_REF_NAME" \
+            --notes "Windows (.cur/.ani + install.inf), macOS (Mousecape .cape) and PNG cursors. Install steps: https://github.com/kurenawi/kurenawi-cursors#readme / Demo: https://kurenawi.github.io/kurenawi-cursors/"

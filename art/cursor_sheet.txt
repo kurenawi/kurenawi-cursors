@@ -1,0 +1,34 @@
+Draw a sheet of 16 tiny super-deformed chibi pixel-art portraits of the character in my uploaded image, for use as a mouse-cursor set.
+
+CHARACTER FIDELITY
+This is kurenawi in her RELAXED everyday form. Keep every key feature: long straight jet-black hair with blunt straight bangs, tied into one low ponytail with a small white-silver hair tie; crimson-red eyes; black kimono with a vivid crimson-red inner collar and crimson-red sleeve linings; black fingerless gloves; a small red maple leaf (紅葉) hair accent is allowed. Cute, warm, a little mischievous kunoichi.
+
+PROPORTIONS
+Extremely super-deformed "mochi" chibi: a big round head that takes about 70% of the figure, with a tiny round body and stubby little arms; bust or very short full body. Big readable expressions, rosy blush on the cheeks. The figure must read clearly when shrunk to 48 pixels, so use bold simple shapes and few details.
+
+THE 16 CELLS (left to right, top to bottom)
+1 gentle happy smile, facing front
+2 head tilted, one finger on her cheek, puzzled look
+3 focused look, holding a small rolled scroll open with both hands
+4 dizzy swirl eyes, little sweat drop, overwhelmed but cute
+5 sharp serious mission eyes, holding a small black kunai up
+6 holding a big calligraphy brush upright with both hands, proud smile
+7 eyes down, writing with a calligraphy brush, concentrating
+8 pouting with puffed cheeks, arms crossed in an X in front of her
+9 sparkly happy face, pointing up-left with her index finger
+10 looking straight up with a small surprised open mouth
+11 hugging one big red maple leaf to her chest, smiling
+12 hugging a small red heart, blushing shyly
+13 both stubby arms stretched out wide, cheerful open smile
+14 playful wink with a small V sign
+15 sleepy, eyes half closed, small yawn
+16 sipping from a small dark-red teacup, content closed eyes
+
+PIXEL STYLE
+Crisp 16-bit game pixel art with clearly visible square pixels, 1px dark outline, restrained palette (black, crimson, warm skin, white highlights), gentle cel shading. No blur, no anti-aliasing, no gradients.
+
+SHEET LAYOUT
+ONE still square image: exactly 4 columns x 4 rows = 16 equal square cells. Same character, same size, same palette and same design in every cell; only the expression, hands and props change.
+Each figure is centered in its cell and fills about 75% of the cell; nothing touches or crosses cell borders. One figure per cell.
+No grid lines, borders, numbers, text, watermark, cursor arrows or icons, floor, shadow or scenery.
+Plain flat white background.

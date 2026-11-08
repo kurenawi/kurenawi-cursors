@@ -1,0 +1,24 @@
+Draw a sheet of 6 more tiny super-deformed chibi pixel-art portraits of the SAME character, matching the attached sprite sheet exactly (same chibi proportions, same face, same palette, same pixel size, same 1px dark outline, same rosy cheeks). They are additions to the same mouse-cursor set.
+
+CHARACTER FIDELITY
+kurenawi in her RELAXED everyday form: long straight jet-black hair with blunt straight bangs, one low ponytail with a small white-silver hair tie; crimson-red eyes; black kimono with a vivid crimson-red inner collar and crimson-red sleeve linings; black fingerless gloves; small red maple leaf hair accent. Cute, warm, a little mischievous kunoichi.
+
+PROPORTIONS
+Extremely super-deformed "mochi" chibi like the attached sheet: big round head about 70% of the figure, tiny round body, stubby arms; bust or very short full body. Must read clearly at 48 pixels: bold simple shapes, few details.
+
+THE 6 CELLS (left to right, top to bottom)
+1 COPY: shadow-clone ninja trick. Two identical tiny kurenawi side by side, the second one a half-transparent copy slightly behind and to the right, both making the same cheerful ninja hand sign.
+2 ALIAS / SHORTCUT: holding a small black kunai tied to a short crimson rope that curls in a loop, playful confident smile.
+3 CELL: hugging a small square board divided into a 3x3 grid of white squares, one square filled crimson, focused smile.
+4 ZOOM IN: leaning forward, looking through a big round magnifying glass held up to one eye, the eye looks huge behind the lens, curious.
+5 ZOOM OUT: leaning back, holding the magnifying glass far away at arm's length, squinting with a small smile.
+6 waving hello with one hand, happy closed-eye smile.
+
+PIXEL STYLE
+Crisp 16-bit game pixel art with clearly visible square pixels, 1px dark outline, restrained palette (black, crimson, warm skin, white highlights), gentle cel shading. No blur, no anti-aliasing, no gradients.
+
+SHEET LAYOUT
+ONE still image: exactly 3 columns x 2 rows = 6 equal square cells (image aspect 3:2). Same character size, palette and design in every cell; only pose, expression and props change.
+Each figure is centered in its cell and fills about 75% of the cell; nothing touches or crosses cell borders. One figure (or the clone pair in cell 1) per cell.
+No grid lines, borders, numbers, text, watermark, cursor arrows or icons, floor, shadow or scenery.
+Plain flat white background.
