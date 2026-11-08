@@ -9,6 +9,10 @@ A pixel-art mouse cursor set featuring kurenawi. Windows (`.cur` / `.ani` + `ins
 
 ![preview](docs/preview.png)
 
+### 紹介動画（76秒・音あり）
+
+[![kurenawi cursors 紹介動画（クリックで再生）](docs/launch_play.jpg)](https://kurenawi.github.io/kurenawi-cursors/launch.mp4)
+
 ## 収録カーソル
 
 - **Windows の標準17種**: 通常、ヘルプ、バックグラウンド作業中（アニメ）、待ち（アニメ）、精密選択、テキスト選択、手書き、利用不可、上下・左右・斜め2方向のリサイズ、移動、代替選択、リンク、位置選択、人の選択

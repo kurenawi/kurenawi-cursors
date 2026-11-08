@@ -233,6 +233,11 @@ footer{{margin-top:36px;font-size:12px;color:#b98390}}
 </div>
 <div id="ghost" class="chip">🍁</div>
 
+<h2>紹介動画</h2>
+<p>76秒。音が出ます。</p>
+<video src="launch.mp4" poster="launch_poster.jpg" controls preload="none" playsinline
+ style="width:100%;max-width:960px;border-radius:10px;background:#1d0910"></video>
+
 <footer>
 カーソル画像: CC BY-NC 4.0 ・ コード: MIT ・ ちびキャラはAIで生成した絵を加工しています ・
 <a class="c-link" href="{REPO}">GitHub</a>
@@ -337,7 +342,8 @@ def main():
     if os.path.isdir(SITE_DIR):
         shutil.rmtree(SITE_DIR)
     shutil.copytree(os.path.join(PACK, "png"), os.path.join(SITE_DIR, "png"))
-    shutil.copyfile(os.path.join(HERE, "docs", "og.png"), os.path.join(SITE_DIR, "og.png"))
+    for name in ("og.png", "launch.mp4", "launch_poster.jpg"):
+        shutil.copyfile(os.path.join(HERE, "docs", name), os.path.join(SITE_DIR, name))
     with open(os.path.join(SITE_DIR, "index.html"), "w") as f:
         f.write(page(hot))
     print(os.path.join(SITE_DIR, "index.html"))

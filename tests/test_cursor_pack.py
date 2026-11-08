@@ -125,6 +125,19 @@ class CursorPackTest(unittest.TestCase):
                                  str(SITE / "og.png")], capture_output=True, text=True)
         self.assertEqual(r.stdout.strip(), "(1200, 630)", r.stderr)
 
+    def test_launch_video_is_published(self):
+        # GitHub's README cannot play a video stored in the repo, so the README shows a poster that
+        # links to the copy served by Pages, and the demo page embeds the same file.
+        page = (SITE / "index.html").read_text()
+        self.assertIn('<video src="launch.mp4"', page)
+        self.assertIn('poster="launch_poster.jpg"', page)
+        for name in ("launch.mp4", "launch_poster.jpg"):
+            self.assertTrue((SITE / name).is_file(), name)
+        readme = (ROOT / "README.md").read_text()
+        self.assertIn("(https://kurenawi.github.io/kurenawi-cursors/launch.mp4)", readme)
+        self.assertIn("docs/launch_play.jpg", readme)
+        self.assertTrue((ROOT / "docs" / "launch_play.jpg").is_file())
+
     def test_demo_and_test_page_are_separate(self):
         # The public demo must show kurenawi's cursors to people who have NOT installed the
         # pack, so every cursor there is an image cursor. The keyword-based install check is
