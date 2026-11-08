@@ -111,6 +111,18 @@ class CursorPackTest(unittest.TestCase):
             self.assertIn(f'data-effect="{eff}"', page)
         self.assertIn("!important", page)  # global cursor override while dragging
 
+    def test_demo_has_ogp_card(self):
+        # Link previews need absolute og/twitter image URLs and a 1200x630 card in the site.
+        page = (PACK / "index.html").read_text()
+        site = "https://kurenawi.github.io/kurenawi-cursors/"
+        for tag in ('property="og:title"', 'property="og:description"', f'property="og:url" content="{site}"',
+                    f'property="og:image" content="{site}og.png"', 'name="twitter:card" content="summary_large_image"',
+                    f'name="twitter:image" content="{site}og.png"'):
+            self.assertIn(tag, page)
+        r = subprocess.run(PY + ["from PIL import Image; import sys; print(Image.open(sys.argv[1]).size)",
+                                 str(PACK / "og.png")], capture_output=True, text=True)
+        self.assertEqual(r.stdout.strip(), "(1200, 630)", r.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

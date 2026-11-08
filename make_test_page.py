@@ -13,6 +13,9 @@ import html
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+SITE = "https://kurenawi.github.io/kurenawi-cursors/"
+DESC = ("紅（くれない）のピクセルアート・マウスカーソル。Windows / macOS (Mousecape) / CSS 対応。"
+        "マスに乗せて全パターンを試せるデモ。")
 PACK = os.path.join(HERE, "dist", "kurenawi-cursors")
 
 # (css keyword, kurenawi role or None, Japanese label, where it appears naturally on macOS)
@@ -96,6 +99,20 @@ def main():
 <html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>kurenawi cursor demo</title>
+<meta name="description" content="{DESC}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="kurenawi cursors">
+<meta property="og:title" content="kurenawi cursor demo">
+<meta property="og:description" content="{DESC}">
+<meta property="og:url" content="{SITE}">
+<meta property="og:image" content="{SITE}og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="kurenawi cursor demo: 14 pixel-art mouse cursors with a chibi kurenawi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="kurenawi cursor demo">
+<meta name="twitter:description" content="{DESC}">
+<meta name="twitter:image" content="{SITE}og.png">
 <style>
 body{{margin:0;padding:24px;background:#2c0e18;color:#ffe6ea;font:14px/1.5 -apple-system,"Hiragino Sans",sans-serif}}
 h1{{margin:0 0 4px;color:#fff;text-shadow:0 0 6px #e0102a}} h2{{margin:28px 0 6px;color:#ffb3c0}}
@@ -167,6 +184,8 @@ document.addEventListener("pointerup", () => {{
 <div class="grid">{''.join(extras)}</div>
 </body></html>
 """
+    import shutil
+    shutil.copyfile(os.path.join(HERE, "docs", "og.png"), os.path.join(PACK, "og.png"))
     for name in ("cursor-test.html", "index.html"):
         out = os.path.join(PACK, name)
         with open(out, "w") as f:

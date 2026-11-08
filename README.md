@@ -82,6 +82,7 @@ macOS には標準でカーソルを着せ替える機能がないため、無�
 pip install pillow numpy
 python3 build_cursors.py      # dist/kurenawi-cursors/ に .cur/.ani/.inf/.cape/PNG を出力
 python3 make_test_page.py     # デモページ（index.html）を出力
+python3 make_og_image.py      # OGP画像 docs/og.png を作り直す（macOS のフォントを使うので手元で実行して commit）
 python3 -m unittest discover -s tests
 ```
 
